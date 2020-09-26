@@ -1,0 +1,31 @@
+Sound Effects List
+
+Key
+{ + } - Most Important
+{ < } - Less Important
+
+Gameplay Sounds
+* Footsteps sound
+* Torch Burning sound { < }
+* Lighting Torch sound { + }
+* Door Opening sound
+* Entering Door sound (scene transition) [maybe we'll just use footsteps]
+* Passing the torch sound { < }
+* Pushing Stone sound { + }
+* Jumping sound { < }
+* Landing sound { < }
+* Unfurling ladder sound { + }
+* Climbing ladder sound { < }
+* Stone falling (hitting the ground) { + }
+* Stone hitting a wall (finished pushing)
+
+Menu Sounds
+* switching between selection
+* making selection (confirm) { + }
+* cancel sound { < }
+
+Cutscene Sounds
+* Gentle Ominous Ambience [wind/emptiness] (opening cutscene)
+* Dropping Torch { + }
+* Lighthearted Swirling Wind
+* Picking up torch { < }
