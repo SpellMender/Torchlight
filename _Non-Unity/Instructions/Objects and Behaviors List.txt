@@ -1,0 +1,54 @@
+Objects and Behavior List
+
+Key
+{ + } - Most Important
+{ < } - Less Important
+
+
+==============
+CHARACTERS
+==============
+
+All
+* Walk (side to side) { + }
+* Light Torch { + }
+* Give Torch (lose control)
+* Take Torch (take control)
+* Activate Ladder (ladder drops)
+* Climb Ladder
+* Fall (always safe) { < }
+* Enter Door { + }
+
+Father
+* Push Stone
+
+Daughter
+* Jump
+
+Little Boy
+- N/A
+
+==============
+OBJECTS
+==============
+
+Torch
+* Unlit (on wall) { + }
+* Lit (on wall) { + }
+   '-> flickering { < }
+* Held (in hand) { + }
+   '-> flickering { < }
+* Activate Door (when all are lit) { + }
+
+Door
+* Closed { + }
+* Opened (when all torches are lit)
+
+Stone
+* Move
+* Fall { < }
+* Stop
+
+Ladder
+* Folded (can be activated)
+* Unfolded/Activated (climbable)
