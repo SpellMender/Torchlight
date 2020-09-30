@@ -103,7 +103,15 @@ public class CharacterControllerBoy : MonoBehaviour
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
-        isGrounded = Physics2D.OverlapCircle(groundCheckPos, 0.23f, layerMask);
+        activeCharacter = CharacterSwap.activeCharacter;
+        if (activeCharacter != 2)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = Physics2D.OverlapCircle(groundCheckPos, 0.23f, layerMask);
+        }
 
         // Apply movement velocity
         r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
