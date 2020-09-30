@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 /*
  * code base found free to use at https://sharpcoderblog.com/blog/2d-platformer-character-controller
  * modified by John Miller ThunderBroJohn on github
@@ -12,7 +16,7 @@ using UnityEngine;
 
 
 
-public class CharacterController2D : MonoBehaviour
+public class CharacterControllerFather : MonoBehaviour
 {
     // Move player in 2D space
     public float maxSpeed = 3.4f;
@@ -20,9 +24,9 @@ public class CharacterController2D : MonoBehaviour
     public float gravityScale = 1.5f;
     public Camera mainCamera;
 
-    // Who is moving
+    // Who is moving?
     // 1 = father, 2 = boy, 3 = daughter
-    public int activeCharacter = 1;
+    private static int activeCharacter = 0;
 
     // Physics
     bool facingRight = true;
@@ -54,6 +58,13 @@ public class CharacterController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //check active character
+        activeCharacter = CharacterSwap.activeCharacter;
+        if (activeCharacter != 1)
+        {
+            return;
+        }
+
         // Movement controls
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || r2d.velocity.x > 0.01f))
         {
@@ -80,12 +91,6 @@ public class CharacterController2D : MonoBehaviour
                 facingRight = false;
                 t.localScale = new Vector3(-Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
             }
-        }
-
-        // Jumping
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
-        {
-            r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
         }
 
         // Camera follow
