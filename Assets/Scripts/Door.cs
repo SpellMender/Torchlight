@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (unlocked == true && collision.tag == "Player")
+        if (unlocked == true && collision.tag.Contains("Active"))
         {
             int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
             SceneManager.LoadScene(nextSceneIndex);

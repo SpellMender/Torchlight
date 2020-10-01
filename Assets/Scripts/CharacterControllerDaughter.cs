@@ -23,6 +23,7 @@ public class CharacterControllerDaughter : MonoBehaviour
     // Who is moving?
     // 1 = father, 2 = boy, 3 = daughter
     private static int activeCharacter = 0;
+    private bool switchChar = false;
 
     // Physics
     bool facingRight = true;
@@ -104,6 +105,13 @@ public class CharacterControllerDaughter : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Input.GetKeyUp(KeyCode.E) && switchChar)
+        {
+            GameController.switchChar = true;
+            GameController.activeCharacter = 3;
+        }
+        switchChar = false;
+
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
@@ -122,5 +130,20 @@ public class CharacterControllerDaughter : MonoBehaviour
 
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, 0.23f, 0), isGrounded ? Color.green : Color.red);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Contains("Active") || collision.gameObject.tag == "Torch")
+        {
+            switchChar = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Contains("Active") || collision.gameObject.tag == "Torch")
+        {
+            switchChar = true;
+        }
     }
 }
