@@ -1,16 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance;
     public static int activeCharacter = 1;
+    public static bool switchChar = false;
     public GameObject boy;
     public GameObject daughter;
     public GameObject father;
     public GameObject fatherTorch;
     public GameObject daughterTorch;
     public GameObject boyTorch;
+
+    private void Awake()
+    {
+        if (instance == null) {
+            instance = this;
+        } else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +40,18 @@ public class GameController : MonoBehaviour
     // AC 1
     void ActivateFather()
     {
-        father.GetComponent<Rigidbody2D>().simulated = true;
-        boy.GetComponent<Rigidbody2D>().simulated = false;
-        daughter.GetComponent<Rigidbody2D>().simulated = false;
+        daughter.tag = "Player";
+        father.tag = "Active";
+        boy.tag = "Player";
+
+        father.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        father.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        boy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        daughter.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+
+        father.GetComponent<CapsuleCollider2D>().isTrigger = false;
+        boy.GetComponent<CapsuleCollider2D>().isTrigger = true;
+        daughter.GetComponent<CapsuleCollider2D>().isTrigger = true;
 
         daughter.GetComponent<Animator>().Play("Torchless");
         boy.GetComponent<Animator>().Play("Torchless");
@@ -43,13 +65,22 @@ public class GameController : MonoBehaviour
     // AC 2
     void ActivateBoy()
     {
+        daughter.tag = "Player";
+        father.tag = "Player";
+        boy.tag = "Active";
+
         fatherTorch.GetComponent<SpriteRenderer>().enabled = false;
         daughterTorch.GetComponent<SpriteRenderer>().enabled = false;
         boyTorch.GetComponent<SpriteRenderer>().enabled = true;
 
-        father.GetComponent<Rigidbody2D>().simulated = false;
-        boy.GetComponent<Rigidbody2D>().simulated = true;
-        daughter.GetComponent<Rigidbody2D>().simulated = false;
+        father.GetComponent<CapsuleCollider2D>().isTrigger = true;
+        boy.GetComponent<CapsuleCollider2D>().isTrigger = false;
+        daughter.GetComponent<CapsuleCollider2D>().isTrigger = true;
+
+        father.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        boy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        boy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        daughter.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
 
         daughter.GetComponent<Animator>().Play("Torchless");
         boy.GetComponent<Animator>().Play("Idle");
@@ -59,13 +90,22 @@ public class GameController : MonoBehaviour
     // AC 3
     void ActivateDaughter()
     {
+        daughter.tag = "Active";
+        father.tag = "Player";
+        boy.tag = "Player";
+
         fatherTorch.GetComponent<SpriteRenderer>().enabled = false;
         daughterTorch.GetComponent<SpriteRenderer>().enabled = true;
         boyTorch.GetComponent<SpriteRenderer>().enabled = false;
 
-        father.GetComponent<Rigidbody2D>().simulated = false;
-        boy.GetComponent<Rigidbody2D>().simulated = false;
-        daughter.GetComponent<Rigidbody2D>().simulated = true;
+        father.GetComponent<CapsuleCollider2D>().isTrigger = true;
+        boy.GetComponent<CapsuleCollider2D>().isTrigger = true;
+        daughter.GetComponent<CapsuleCollider2D>().isTrigger = false;
+
+        father.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        boy.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        daughter.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+        daughter.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 
         daughter.GetComponent<Animator>().Play("Idle");
         boy.GetComponent<Animator>().Play("Torchless");
@@ -76,38 +116,35 @@ public class GameController : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // if needing to reset press r
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().Name);
+            activeCharacter = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
 
         // if character active is touching character not active and presses "e" swap active character to non active
-        if (Input.GetKeyDown(KeyCode.E))
+        if (switchChar)
         {
-
             //temp for test
             if (activeCharacter == 1)
             {
-                activeCharacter = 2;
-                ActivateBoy();
-            }
-            else if (activeCharacter == 2)
-            {
-                activeCharacter = 3;
-                ActivateDaughter();
-            }
-            else if (activeCharacter == 3)
-            {
-                activeCharacter = 1;
                 ActivateFather();
+                switchChar = false;
             }
-
-            //final with colision check
-            ;
+            if (activeCharacter == 2)
+            {
+                ActivateBoy();
+                switchChar = false;
+            }
+            if (activeCharacter == 3)
+            {
+                ActivateDaughter();
+                switchChar = false;
+            }
         }
     }
 }
