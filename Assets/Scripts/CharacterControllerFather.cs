@@ -55,7 +55,7 @@ public class CharacterControllerFather : MonoBehaviour
     void Update()
     {
         //check active character
-        activeCharacter = CharacterSwap.activeCharacter;
+        activeCharacter = GameController.activeCharacter;
         if (activeCharacter != 1)
         {
             return;
@@ -65,6 +65,7 @@ public class CharacterControllerFather : MonoBehaviour
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || r2d.velocity.x > 0.01f))
         {
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
+            GetComponent<Animator>().Play("Walk");
         }
         else
         {
@@ -72,6 +73,7 @@ public class CharacterControllerFather : MonoBehaviour
             {
                 moveDirection = 0;
             }
+            GetComponent<Animator>().Play("Idle");
         }
 
         // Change facing direction
@@ -99,7 +101,7 @@ public class CharacterControllerFather : MonoBehaviour
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
         // Check if player is grounded
-        activeCharacter = CharacterSwap.activeCharacter;
+        activeCharacter = GameController.activeCharacter;
         if (activeCharacter != 1)
         {
             isGrounded = true;
@@ -115,4 +117,5 @@ public class CharacterControllerFather : MonoBehaviour
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, 0.23f, 0), isGrounded ? Color.green : Color.red);
     }
+
 }

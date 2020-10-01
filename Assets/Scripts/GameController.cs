@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSwap : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     public static int activeCharacter = 1;
     public GameObject boy;
@@ -79,16 +79,16 @@ public class CharacterSwap : MonoBehaviour
     void Update()
     {
         // if character active is touching character not active and presses "e" swap active character to non active
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            
+
             //temp for test
             if (activeCharacter == 1)
             {
                 activeCharacter = 2;
                 ActivateBoy();
             }
-            else if (activeCharacter == 2) 
+            else if (activeCharacter == 2)
             {
                 activeCharacter = 3;
                 ActivateDaughter();
