@@ -261,6 +261,20 @@ MonoBehaviour:
   fatherTorch: {fileID: 125072028}
   daughterTorch: {fileID: 734034703}
   boyTorch: {fileID: 125226031}
+--- !u!114 &109112909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109112907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c90255cd938ec40b6eabd2210129eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torchRequirement: 1
+  litTorchDebug: 0
 --- !u!1 &125072028
 GameObject:
   m_ObjectHideFlags: 0
