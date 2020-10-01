@@ -78,6 +78,13 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if needing to reset press r
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().Name);
+        }
+
+
         // if character active is touching character not active and presses "e" swap active character to non active
         if (Input.GetKeyDown(KeyCode.E))
         {
