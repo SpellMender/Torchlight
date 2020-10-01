@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Color = UnityEngine.Color;
 
@@ -69,8 +70,10 @@ public class Prologue : MonoBehaviour
             case 6:
                 dialogueBox.GetComponent<Text>().text = "...and I knew I'd need my little boy.";
                 break;
-            //case 7:
-            //    /*LOAD NEXT SCENE*/
+            case 7:
+                int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+                SceneManager.LoadScene(nextSceneIndex);
+                break;
             default:
                 msgCt = 0;
                 break;

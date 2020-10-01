@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
+    public GameObject openedDoor;
     private bool unlocked = false;
 
 
@@ -13,14 +15,19 @@ public class Door : MonoBehaviour
         if (TorchCounter.unlockDoor == true && unlocked == false) 
         {
             unlocked = true;
+
             //Now show open the door
-
+            openedDoor.GetComponent<SpriteRenderer>().enabled = true;   //The open door sprite
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;  //The closed door sprite
         }
+    }
 
-        //ADD on collision if door open
-        //if(unlocked == true && /*door collision*/ )
-        //{ complete scene }
-
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (unlocked == true && collision.tag == "Player")
+        {
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            SceneManager.LoadScene(nextSceneIndex);
+        }
     }
 }
