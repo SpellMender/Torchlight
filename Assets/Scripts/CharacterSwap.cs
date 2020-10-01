@@ -10,6 +10,8 @@ public class CharacterSwap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.Find("Boy").GetComponent<Rigidbody2D>().mass = 0.001f;
+        GameObject.Find("Daughter").GetComponent<Rigidbody2D>().mass = 0.001f;
         ActivateFather();
     }
 
