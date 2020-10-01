@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 2033038976}
-  fadeSpeed: 0.0075
+  fadeSpeed: 0.0025
 --- !u!4 &1498678285
 Transform:
   m_ObjectHideFlags: 0
