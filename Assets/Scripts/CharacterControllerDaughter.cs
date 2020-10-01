@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 /*
  * code base found free to use at https://sharpcoderblog.com/blog/2d-platformer-character-controller
  * modified by John Miller ThunderBroJohn on github
