@@ -44,8 +44,9 @@ public class CharacterSwap : MonoBehaviour
     void Update()
     {
         // if character active is touching character not active and presses "e" swap active character to non active
-        if(Input.GetKey(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E))
         {
+            
             //temp for test
             if (activeCharacter == 1)
             {
