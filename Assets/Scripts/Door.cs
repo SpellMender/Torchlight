@@ -26,6 +26,8 @@ public class Door : MonoBehaviour
     {
         if (unlocked == true && collision.tag.Contains("Active"))
         {
+            GameController.switchChar = 1;
+            GameController.activeCharacter = 1;
             int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
             SceneManager.LoadScene(nextSceneIndex);
         }

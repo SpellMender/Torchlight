@@ -23,7 +23,7 @@ public class CharacterControllerBoy : MonoBehaviour
     // Who is moving?
     // 1 = father, 2 = boy, 3 = daughter
     private static int activeCharacter = 0;
-    private bool switchChar = false;
+    //private int switchChar = 0;
 
     // Physics
     bool facingRight = true;
@@ -99,12 +99,12 @@ public class CharacterControllerBoy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKeyUp(KeyCode.E) && switchChar)
-        {
-            GameController.switchChar = true;
-            GameController.activeCharacter = 2;
-        }
-        switchChar = false;
+        //if (Input.GetKeyUp(KeyCode.E) && switchChar)
+        //{
+        //    GameController.switchChar = true;
+        //    GameController.activeCharacter = 2;
+        //}
+        //switchChar = false;
 
         Bounds colliderBounds = mainCollider.bounds;
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, 0.1f, 0);
@@ -130,7 +130,7 @@ public class CharacterControllerBoy : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains("Active") || collision.gameObject.tag == "Torch")
         {
-            switchChar = true;
+            GameController.switchChar = 2;
         }
     }
 
@@ -138,7 +138,7 @@ public class CharacterControllerBoy : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains("Active") || collision.gameObject.tag == "Torch")
         {
-            switchChar = true;
+            GameController.switchChar = 2;
         }
     }
 }

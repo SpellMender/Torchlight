@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public static int activeCharacter = 1;
-    public static bool switchChar = false;
+    public static int switchChar = 0;
     public GameObject boy;
     public GameObject daughter;
     public GameObject father;
@@ -127,23 +127,28 @@ public class GameController : MonoBehaviour
 
 
         // if character active is touching character not active and presses "e" swap active character to non active
-        if (switchChar)
+        if (Input.GetKeyUp(KeyCode.E))
         {
-            //temp for test
-            if (activeCharacter == 1)
+            switch (switchChar)
             {
-                ActivateFather();
-                switchChar = false;
-            }
-            if (activeCharacter == 2)
-            {
-                ActivateBoy();
-                switchChar = false;
-            }
-            if (activeCharacter == 3)
-            {
-                ActivateDaughter();
-                switchChar = false;
+                case 1:
+                    activeCharacter = 1;
+                    ActivateFather();
+                    switchChar = 0;
+                    break;
+                case 2:
+                    activeCharacter = 2;
+                    ActivateBoy();
+                    switchChar = 0;
+                    break;
+                case 3:
+                    activeCharacter = 3;
+                    ActivateDaughter();
+                    switchChar = 0;
+                    break;
+                default:
+                    switchChar = 0;
+                    break;
             }
         }
     }
