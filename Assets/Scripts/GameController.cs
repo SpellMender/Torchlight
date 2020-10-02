@@ -28,9 +28,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fatherTorch.GetComponent<SpriteRenderer>().enabled = false;
-        daughterTorch.GetComponent<SpriteRenderer>().enabled = false;
-        boyTorch.GetComponent<SpriteRenderer>().enabled = false;
+        fatherTorch.SetActive(false);
+        daughterTorch.SetActive(false);
+        boyTorch.SetActive(false);
 
         boy.GetComponent<Rigidbody2D>().mass = 0.001f;
         daughter.GetComponent<Rigidbody2D>().mass = 0.001f;
@@ -57,9 +57,9 @@ public class GameController : MonoBehaviour
         boy.GetComponent<Animator>().Play("Torchless");
         father.GetComponent<Animator>().Play("Idle");
 
-        fatherTorch.GetComponent<SpriteRenderer>().enabled = true;
-        daughterTorch.GetComponent<SpriteRenderer>().enabled = false;
-        boyTorch.GetComponent<SpriteRenderer>().enabled = false;
+        fatherTorch.SetActive(true);
+        daughterTorch.SetActive(false);
+        boyTorch.SetActive(false);
     }
 
     // AC 2
@@ -69,9 +69,9 @@ public class GameController : MonoBehaviour
         father.tag = "Player";
         boy.tag = "Active";
 
-        fatherTorch.GetComponent<SpriteRenderer>().enabled = false;
-        daughterTorch.GetComponent<SpriteRenderer>().enabled = false;
-        boyTorch.GetComponent<SpriteRenderer>().enabled = true;
+        fatherTorch.SetActive(false);
+        daughterTorch.SetActive(false);
+        boyTorch.SetActive(true);
 
         father.GetComponent<CapsuleCollider2D>().isTrigger = true;
         boy.GetComponent<CapsuleCollider2D>().isTrigger = false;
@@ -94,9 +94,9 @@ public class GameController : MonoBehaviour
         father.tag = "Player";
         boy.tag = "Player";
 
-        fatherTorch.GetComponent<SpriteRenderer>().enabled = false;
-        daughterTorch.GetComponent<SpriteRenderer>().enabled = true;
-        boyTorch.GetComponent<SpriteRenderer>().enabled = false;
+        fatherTorch.SetActive(false);
+        daughterTorch.SetActive(true);
+        boyTorch.SetActive(false);
 
         father.GetComponent<CapsuleCollider2D>().isTrigger = true;
         boy.GetComponent<CapsuleCollider2D>().isTrigger = true;
@@ -116,7 +116,7 @@ public class GameController : MonoBehaviour
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         // if needing to reset press r
         if (Input.GetKeyDown(KeyCode.R))

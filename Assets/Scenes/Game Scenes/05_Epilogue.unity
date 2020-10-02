@@ -1465,7 +1465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &990153622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1764,7 +1764,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -112.79001, y: -19.470001}
+  m_AnchoredPosition: {x: -90.5, y: -26.699997}
   m_SizeDelta: {x: 426.36877, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &1261854226
@@ -2394,7 +2394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
-  waitTime: 1000
+  waitTime: 1050
   father: {fileID: 1879054072}
   boy: {fileID: 1722536580}
   daughter: {fileID: 1726848372}

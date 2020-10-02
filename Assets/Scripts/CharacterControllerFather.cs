@@ -127,17 +127,26 @@ public class CharacterControllerFather : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Contains("Active") || collision.gameObject.tag == "Torch")
+        if (collision.gameObject.tag == "Torch")
         {
-            GameController.switchChar = 1;
+                GameController.switchChar = 1;
+            //else { GameController.switchChar = 0; }
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Torch")
+        {
+                GameController.switchChar = 1;
+            //else { GameController.switchChar = 0; }
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Contains("Active") || collision.gameObject.tag == "Torch")
+        if (collision.gameObject.tag == "Torch")
         {
-            GameController.switchChar = 1;
+            GameController.switchChar = 0;
         }
     }
 }

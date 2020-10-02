@@ -37,7 +37,7 @@ public class Epilogue : MonoBehaviour
 
         //for curtain text
     //public GameObject curtainText;
-    //private Color textColor;
+    private Color textColor;
     //private bool workText;
 
 
@@ -55,7 +55,12 @@ public class Epilogue : MonoBehaviour
             //for curtain
         curtainColor = curtain.GetComponent<Image>().color;
         //for curtain text
-        //textColor = curtainText.GetComponent<Text>().color;
+        textColor = daughter_text.GetComponent<Text>().color;
+        textColor.r = 0.235f;
+        textColor.g = 0.235f;
+        textColor.b = 0.235f;
+        textColor.a = 1f;
+
     }
 
     // Update is called once per frame
@@ -120,6 +125,7 @@ public class Epilogue : MonoBehaviour
             counterOn = false;
             //what happens after wait time
             daughter_text.GetComponent<Text>().text = "Where... Where is Grandma?";
+            daughter_text.GetComponent<Text>().color = textColor;
             daughter_text.SetActive(true);
 
             //curtain fades in
@@ -132,7 +138,6 @@ public class Epilogue : MonoBehaviour
             sequence = 4;
             counterOn = false;
             //what happens after wait time
-            daughter_text.SetActive(false);
             grandma_Text.SetActive(true);
             grandmother.SetActive(true);
             father.SetActive(false);
@@ -148,6 +153,7 @@ public class Epilogue : MonoBehaviour
             sequence = 5;
             counterOn = false;
             //what happens after wait time
+            daughter_text.SetActive(false);
             grandma_Text.SetActive(false);
             grandmother.SetActive(false);
             //curtain fades out
