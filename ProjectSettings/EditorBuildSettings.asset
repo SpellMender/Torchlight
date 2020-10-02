@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game Scenes/1_Tutorial.unity
     guid: 01ccc9ede146cd34ea77df1632ce7e37
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/2_Ladder.unity
+    guid: 619f187d3a9791e4c824a908527a74bf
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/05_Epilogue.unity
+    guid: 85bb56cd3457f304dac32f83589272bf
   m_configObjects: {}

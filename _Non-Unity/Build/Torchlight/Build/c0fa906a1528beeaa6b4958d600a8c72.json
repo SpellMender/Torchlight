@@ -1,0 +1,15 @@
+{
+"companyName": "SpellMender LLC",
+"productName": "Torchlight",
+"productVersion": "0.1",
+"dataUrl": "73d3b13e3818cbe5c2d80a68fb1ebc45.unityweb",
+"wasmCodeUrl": "596c02c3cdcd571a665926f975ca4e8a.unityweb",
+"wasmFrameworkUrl": "3fc468b213604f7709816b1be8ae82c0.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.11f1"
+}

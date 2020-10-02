@@ -15,15 +15,15 @@ public class GameController : MonoBehaviour
     public GameObject daughterTorch;
     public GameObject boyTorch;
 
-    private void Awake()
-    {
-        if (instance == null) {
-            instance = this;
-        } else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (instance == null) {
+    //        instance = this;
+    //    } else if (instance != this)
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     // Start is called before the first frame update
     void Start()

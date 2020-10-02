@@ -89,6 +89,8 @@ public class Epilogue : MonoBehaviour
 
         if (fatherStop)
         {
+            daughter_text.SetActive(true);
+            daughter_text.GetComponent<Text>().color = Color.white;
             fatherAnim.Play("Idle");
             fatherRB.velocity = Vector2.zero;
             fatherStop = false;
@@ -106,6 +108,7 @@ public class Epilogue : MonoBehaviour
             counter = 0;
             sequence = 2;
             //what happens after wait time
+            daughter_text.SetActive(false);
             fatherAnim.Play("Torchless");
             heldTorch.SetActive(false);
             torch.SetActive(true);
@@ -116,7 +119,9 @@ public class Epilogue : MonoBehaviour
             sequence = 3;
             counterOn = false;
             //what happens after wait time
+            daughter_text.GetComponent<Text>().text = "Where... Where is Grandma?";
             daughter_text.SetActive(true);
+
             //curtain fades in
             workCurtain = true;
             waning = false;

@@ -538,7 +538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194244573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.369, y: -2.24, z: 0}
+  m_LocalPosition: {x: 2.52, y: -2.34, z: 0}
   m_LocalScale: {x: 0.9295918, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1517,7 +1517,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Gradma? I don't understand.
+  m_Text: Father, I don't understand...
 --- !u!222 &990153624
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2393,8 +2393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d648a49cec2cd964ebe6bdd1bbe1fb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.25
-  waitTime: 1050
+  moveSpeed: 0.5
+  waitTime: 1000
   father: {fileID: 1879054072}
   boy: {fileID: 1722536580}
   daughter: {fileID: 1726848372}

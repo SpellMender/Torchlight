@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TorchCounter : MonoBehaviour
 {
-
     public static bool unlockDoor = false;
     public static int torchCount;
     public int torchRequirement;
